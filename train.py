@@ -239,7 +239,7 @@ def train():
     
     ############################
     if WORLD_RANK == 0:
-        persistant_path = os.environ['MODEL_S3_PATH'] + str(datetime.now().strftime("%m-%d-%Y-%H-%M-%S"))
+        persistant_path = os.environ['OUTPUT_MODEL_S3_PATH'] + str(datetime.now().strftime("%m-%d-%Y-%H-%M-%S")) + '/'
         os.system("./s5cmd sync {0} {1}".format(training_args.output_dir, persistant_path))
 
     torch.distributed.barrier()
